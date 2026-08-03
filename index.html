@@ -279,6 +279,7 @@
       <a href="#quote" class="nav__link">Custom Quote</a>
       <a href="#about" class="nav__link">About</a>
       <a href="#contact" class="nav__link">Contact</a>
+      <a href="#ownerOverlay" class="nav__link">⚙️Admin</a>
     </div>
     <div class="nav__right">
       <button class="nav__bag-btn" id="bagBtn" aria-label="Open your bag">
@@ -478,7 +479,7 @@
   <div class="drawer__foot" id="drawerFoot">
     <div class="drawer__total"><span>Total</span><span id="drawerTotal">R0</span></div>
     <div class="field"><label for="cName">Name</label><input id="cName" placeholder="Your name"></div>
-    <div class="field"><label for="cPhone">WhatsApp number</label><input id="cPhone" placeholder="0719907178"></div>
+    <div class="field"><label for="cPhone">WhatsApp number</label><input id="cPhone" placeholder="0700000000"></div>
     <div class="field"><label for="cDelivery">Delivery</label>
       <select id="cDelivery"><option>Local delivery</option><option>Courier / shipping</option><option>Collection</option></select>
     </div>
@@ -516,7 +517,7 @@
    CONFIG — replace these with your real details
 ===================================================== */
 const BUSINESS_NAME = "Stitch & Bloom";
-const WHATSAPP_NUMBER = "27000000000"; // TODO: your WhatsApp number, country code first, digits only
+const WHATSAPP_NUMBER = "27719907178"; // TODO: your WhatsApp number, country code first, digits only
 const CURRENCY = "R";
 const ART_BG = "#FBEAE0";
 
@@ -534,19 +535,18 @@ const WOOL_COLORS = [
 ];
 
 const PRODUCTS = [
-  {id:'p1', name:'Sunbeam Crop Top', category:'top', price:450, color:'marigold', desc:'A cropped, scallop-hem top for warm, easy days.', sizes:['XS','S','M','L','XL']},
-  {id:'p2', name:'Meadow Lace Top', category:'top', price:520, color:'sage', desc:'Open lacy stitch-work with a relaxed, breezy fit.', sizes:['XS','S','M','L','XL']},
-  {id:'p3', name:'Cloud Puff Sweater', category:'top', price:690, color:'cream', desc:'A chunky, cosy pullover with a soft bubble texture.', sizes:['XS','S','M','L','XL']},
-  {id:'p4', name:'Terracotta Wrap Skirt', category:'skirt', price:680, color:'terracotta', desc:"An A-line wrap skirt that ties at the side.", sizes:['XS','S','M','L','XL']},
-  {id:'p5', name:'Blush Bloom Mini Skirt', category:'skirt', price:550, color:'blush', desc:'A flirty high-waisted mini with a shell-stitch hem.', sizes:['XS','S','M','L','XL']},
-  {id:'p6', name:'Golden Hour Maxi Dress', category:'dress', price:1250, color:'marigold', desc:'Floor-length dress with a fitted bodice and flowing skirt.', sizes:['XS','S','M','L','XL']},
-  {id:'p7', name:'Coral Reef Midi Dress', category:'dress', price:980, color:'raspberry', desc:'Midi dress with a textured, wave-stitch bodice.', sizes:['XS','S','M','L','XL']},
-  {id:'p8', name:'Berry Fields Sundress', category:'dress', price:890, color:'lavender', desc:'A sweet sundress with adjustable straps.', sizes:['XS','S','M','L','XL']},
-  {id:'p9', name:'Cottage Bucket Hat', category:'hat', price:280, color:'sage', desc:'A soft-brimmed bucket hat for sunny strolls.', sizes:['S/M','L/XL']},
-  {id:'p10', name:'Sunday Beret', category:'hat', price:320, color:'charcoal', desc:'A slouchy beret with a chunky rib trim.', sizes:['One size']},
-  {id:'p11', name:'Cloud Nine Beanie', category:'hat', price:260, color:'teal', desc:'A ribbed beanie topped with a pom-pom.', sizes:['One size']}
+  {id:'p1', name:'Sunbeam Crop Top', category:'top', price:450, color:'marigold', desc:'A cropped, scallop-hem top for warm, easy days.', sizes:['XS','S','M','L','XL'], image:'https://ribblr.com/pattern/the-sunbeam-top-Crochet'},
+  {id:'p2', name:'Meadow Lace Top', category:'top', price:520, color:'sage', desc:'Open lacy stitch-work with a relaxed, breezy fit.', sizes:['XS','S','M','L','XL'], image:'https://www.google.com/imgres?q=crochet%20Meadow%20Lace%20Top&imgurl=https%3A%2F%2Fi.pinimg.com%2F736x%2F5f%2F72%2F00%2F5f7200acc9b2eb4b1f257779eeb00b40.jpg&imgrefurl=https%3A%2F%2Fkr.pinterest.com%2Fpin%2F348606827429095301%2F&docid=NMusiKKkzeP2BM&tbnid=Hokh_tnE__wYTM&vet=12ahUKEwiKstiGzoSWAxVaT0EAHShUKqoQnPAOegQIShAA..i&w=736&h=981&hcb=2&ved=2ahUKEwiKstiGzoSWAxVaT0EAHShUKqoQnPAOegQIShAA'},
+  {id:'p3', name:'Cloud Puff Sweater', category:'top', price:690, color:'cream', desc:'A chunky, cosy pullover with a soft bubble texture.', sizes:['XS','S','M','L','XL'], image:'https://www.etsy.com/ca/listing/1677969256/cloud-cardigan-pattern-crochet-hooded'},
+  {id:'p4', name:'Terracotta Wrap Skirt', category:'skirt', price:680, color:'terracotta', desc:"An A-line wrap skirt that ties at the side.", sizes:['XS','S','M','L','XL'], image:'https://www.etsy.com/au/market/crochet_wrap_skirt'},
+  {id:'p5', name:'Blush Bloom Mini Skirt', category:'skirt', price:550, color:'blush', desc:'A flirty high-waisted mini with a shell-stitch hem.', sizes:['XS','S','M','L','XL'], image:'https://www.instagram.com/p/DYhN9hql3-I/'},
+  {id:'p6', name:'Golden Hour Maxi Dress', category:'dress', price:1250, color:'marigold', desc:'Floor-length dress with a fitted bodice and flowing skirt.', sizes:['XS','S','M','L','XL'], image:'https://www.tiktok.com/discover/fashion-nova-golden-hour-maxi-dress'},
+  {id:'p7', name:'Coral Reef Midi Dress', category:'dress', price:980, color:'raspberry', desc:'Midi dress with a textured, wave-stitch bodice.', sizes:['XS','S','M','L','XL'], image:'https://www.freemans.com/products/sosandar-coral-crochet-ring-detail-midi-dress/_/A-17R241_6'},
+  {id:'p8', name:'Berry Fields Sundress', category:'dress', price:890, color:'lavender', desc:'A sweet sundress with adjustable straps.', sizes:['XS','S','M','L','XL'], image:'https://soukainacollections.com/the-white-princess-crochet-baby-dress-free-pattern/'},
+  {id:'p9', name:'Cottage Bucket Hat', category:'hat', price:280, color:'sage', desc:'A soft-brimmed bucket hat for sunny strolls.', sizes:['S/M','L/XL'], image:'https://easycrochet.com/partner/cool-crochet-bucket-hat/'},
+  {id:'p10', name:'Sunday Beret', category:'hat', price:320, color:'charcoal', desc:'A slouchy beret with a chunky rib trim.', sizes:['One size'], image:'https://yarnsea.com/en/projects/3020/crochet-beret-hat-written-pattern-pdf'},
+  {id:'p11', name:'Cloud Nine Beanie', category:'hat', price:260, color:'teal', desc:'A ribbed beanie topped with a pom-pom.', sizes:['One size'], image:'https://www.instagram.com/p/DPpQQkgkbt_/'}
 ];
-
 const CAT_LABEL = {top:'Top', skirt:'Skirt', dress:'Dress', hat:'Hat'};
 
 /* =====================================================
